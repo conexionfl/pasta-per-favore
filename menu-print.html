@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pasta Per Favore — Printed Menu (Letter)</title>
+<link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  @page{size:letter;margin:0}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{width:8.5in;height:11in;margin:0 auto;background:#121110;color:#f3ead9;font-family:'Jost',sans-serif;font-weight:300;position:relative;overflow:hidden}
+  .page{position:relative;width:100%;height:100%;padding:.45in .6in .4in;display:flex;flex-direction:column}
+
+  /* corner flourishes */
+  .corner{position:absolute;width:1.1in;height:1.1in;color:#e3b860}
+  .corner svg{width:100%;height:100%}
+  .c-tl{top:.25in;left:.25in}
+  .c-tr{top:.25in;right:.25in;transform:scaleX(-1)}
+
+  header{text-align:center;margin-bottom:.16in}
+  header img{width:.9in;height:.9in;border-radius:50%;margin-bottom:.06in}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:30pt;color:#e3b860;letter-spacing:.06em}
+  .subnote{color:#c05a4a;font-weight:500;font-size:8.5pt;letter-spacing:.06em;line-height:1.5;margin-top:2pt}
+  .squiggle{color:#e3b860;font-family:'Cormorant Garamond',serif;font-size:11pt;letter-spacing:.4em;margin-top:3pt}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:0 .45in;flex:1}
+  h2{font-family:'Jost',sans-serif;font-weight:500;font-size:12.5pt;color:#e3b860;letter-spacing:.04em;margin:.14in 0 .07in}
+  h2.first{margin-top:0}
+  .item{margin-bottom:.07in}
+  .item .nm{font-weight:500;font-size:10.5pt;color:#fff}
+  .item .nm .pr{color:#e3b860}
+  .item .ds{font-size:8.8pt;color:#cfc4ae;line-height:1.35}
+  .right .item{text-align:right}
+  .drinks{font-size:9pt;color:#cfc4ae;line-height:1.5}
+
+  footer{display:flex;align-items:center;justify-content:space-between;gap:.3in;border-top:1px solid rgba(227,184,96,.35);padding-top:.12in;margin-top:.14in}
+  footer .note{font-size:8.5pt;color:#c05a4a;font-weight:500;max-width:2.9in}
+  footer .addr{font-size:8.5pt;color:#cfc4ae;text-align:center;line-height:1.5}
+  footer .addr b{color:#e3b860;font-weight:500;letter-spacing:.05em}
+  .qr{display:flex;align-items:center;gap:.1in}
+  .qr img{width:.85in;height:.85in;border:3px solid #e3b860;border-radius:4px;background:#fff}
+  .qr span{font-size:7.5pt;color:#e3b860;letter-spacing:.12em;text-transform:uppercase;max-width:.7in;line-height:1.4}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="corner c-tl"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round"><path stroke-width="2.5" d="M4 60 V12 a8 8 0 0 1 8 -8 H60"/><path stroke-width="1.5" d="M12 56 V18 a6 6 0 0 1 6 -6 H56"/><path stroke-width="1.5" d="M20 34 Q20 20 34 20 Q30 30 20 34 Z" fill="currentColor"/><path stroke-width="1.5" d="M24 46 Q26 36 36 32"/><path stroke-width="1.5" d="M46 24 Q36 26 32 36"/><circle cx="66" cy="4" r="2.4" fill="currentColor" stroke="none"/><circle cx="4" cy="66" r="2.4" fill="currentColor" stroke="none"/></svg></div>
+  <div class="corner c-tr"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round"><path stroke-width="2.5" d="M4 60 V12 a8 8 0 0 1 8 -8 H60"/><path stroke-width="1.5" d="M12 56 V18 a6 6 0 0 1 6 -6 H56"/><path stroke-width="1.5" d="M20 34 Q20 20 34 20 Q30 30 20 34 Z" fill="currentColor"/><path stroke-width="1.5" d="M24 46 Q26 36 36 32"/><path stroke-width="1.5" d="M46 24 Q36 26 32 36"/><circle cx="66" cy="4" r="2.4" fill="currentColor" stroke="none"/><circle cx="4" cy="66" r="2.4" fill="currentColor" stroke="none"/></svg></div>
+
+  <header>
+    <img src="https://images.squarespace-cdn.com/content/v1/60d63c8518f2572732e6770d/f5cbd77e-c2d7-4486-a208-85dff57a8292/1.png?format=500w" alt="Pasta Per Favore">
+    <h1>MENU</h1>
+    <div class="subnote">Pasta Specialties (Our Best Sellers)<br>Add House or Caesar Salad to any Pasta Below.</div>
+    <div class="squiggle">﹏﹏◆﹏﹏</div>
+  </header>
+
+  <div class="cols">
+    <div class="left">
+      <div class="item"><div class="nm">(#1) Spaghetti with Meat Sauce · <span class="pr">$13.99</span></div>
+        <div class="ds">Our House Specialty Spaghetti “Bolognese.” Beef, Pork, Sausage &amp; San Marzano Tomato Sauce. Fresh Herbs, Butter, Cream, Braised Slowly for 4 Hours.</div></div>
+      <div class="item"><div class="nm">(#2) Spicy Chicken &amp; Shrimp Pasta · <span class="pr">$14.99</span></div>
+        <div class="ds">Spicy Vodka Cream Sauce, Roast Chicken &amp; Garlic Shrimp, Rigatoni Pasta.</div></div>
+      <div class="item"><div class="nm">(#3) Rigatoni Carbonara · <span class="pr">$14.99</span></div>
+        <div class="ds">A Best Seller! Sautéed Bacon, Garlic &amp; Butter, Four Cheese Cream Sauce &amp; More Parmesan.</div></div>
+      <div class="item"><div class="nm">Lobster Ravioli · <span class="pr">$22.99</span></div>
+        <div class="ds">Fresh Ravioli Filled with Lobster.</div></div>
+      <div class="item"><div class="nm">Fettuccine Alfredo · <span class="pr">$13.99</span></div>
+        <div class="ds">Four Cheese Cream Sauce, Butter, Egg Yolk &amp; Parmesan.</div></div>
+      <div class="item"><div class="nm">Shrimp Scampi · <span class="pr">$14.99</span></div>
+        <div class="ds">Garlic Shrimp Pasta, Lemon Herb Butter Sauce, Parmesan.</div></div>
+      <div class="item"><div class="nm">Pasta Marinara · <span class="pr">$10.99</span></div>
+        <div class="ds">House Made. San Marzano Tomatoes, Fresh Herbs, Garlic, Parmesan.</div></div>
+      <div class="item"><div class="nm">Spaghetti with Meatballs · <span class="pr">$14.99</span></div>
+        <div class="ds">Our Spaghetti Marinara with Three Pork &amp; Beef Meatballs.</div></div>
+      <div class="item"><div class="nm">Chicken Parmesan · <span class="pr">$14.99</span></div>
+        <div class="ds">Lightly Breaded Chicken Breast, topped with House Marinara Sauce &amp; Mozzarella Cheese. Served with a side of Pasta Marinara.</div></div>
+      <div class="item"><div class="nm">Lasagna · <span class="pr">$14.99</span></div>
+        <div class="ds">Old Fashioned Cheese Lasagna with Ricotta.</div></div>
+    </div>
+
+    <div class="right">
+      <h2 class="first">House Made Pasta Add-Ons (Grab &amp; Go)</h2>
+      <div class="item"><div class="nm">3 House Made Meatballs · <span class="pr">$6.99</span></div>
+        <div class="ds">3 Pork &amp; Beef Meatballs, Marinara Sauce.</div></div>
+      <div class="item"><div class="nm">Oven Roasted Chicken · <span class="pr">$6.99</span></div>
+        <div class="ds">1/2 lb. Roast Chicken, Marinated in Herbs, Garlic and Oil.</div></div>
+      <div class="item"><div class="nm">Garlic Scampi Shrimp · <span class="pr">$6.99</span></div>
+        <div class="ds">1/2 lb. Garlic Shrimp with Scampi Sauce.</div></div>
+      <div class="item"><div class="nm">Italian Sausage (2 Links) · <span class="pr">$7.99</span></div>
+        <div class="ds">Two House Made Links.</div></div>
+      <div class="item"><div class="nm">Garlic Butter Mushrooms · <span class="pr">$5.99</span></div>
+        <div class="ds">Sautéed in Garlic &amp; Butter.</div></div>
+      <div class="item"><div class="nm">Meat Sauce (Side) · <span class="pr">$6.99</span></div>
+        <div class="ds">Our Four-Hour Ragù, on the Side.</div></div>
+
+      <h2>Salads</h2>
+      <div class="item"><div class="nm">Caesar Salad · <span class="pr">$4.99</span></div></div>
+      <div class="item"><div class="nm">Italian Deli Chop House Salad · <span class="pr">$5.99</span></div></div>
+
+      <h2>Desserts</h2>
+      <div class="item"><div class="nm">Cannoli · <span class="pr">$3.99</span></div>
+        <div class="ds">(Our Cannolis Contain Pistachios) When Available.</div></div>
+      <div class="item"><div class="nm">Tiramisu · <span class="pr">$7.99</span></div></div>
+      <div class="item"><div class="nm">Cheesecake · <span class="pr">$6.99</span></div></div>
+      <div class="item"><div class="nm">Chocolate Cake · <span class="pr">$6.99</span></div></div>
+      <div class="item"><div class="nm">Flourless Chocolate Cake (Gluten Free) · <span class="pr">$6.99</span></div></div>
+      <div class="item"><div class="nm">Red Velvet Cake · <span class="pr">$6.99</span></div></div>
+
+      <h2>Drinks</h2>
+      <div class="drinks">Coke · Diet Coke · Dr. Pepper · Sprite · Orange Soda — <span style="color:#e3b860">$2.25</span><br>Bottled Water — <span style="color:#e3b860">$1.99</span></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="note">🌿 We Reserve the Right to Change the Type of Pasta based on availability.</div>
+    <div class="addr"><b>PASTA PER FAVORE</b><br>3102 S 24th Street, Kansas City, KS 66106<br>Mon – Sat · 11am – 9pm · pastaperfavore.com</div>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Forder.spoton.com%2Fso-pasta-per-favore-27914%2Fkansas-city-ks%2F69d68d5ac0474c99b9741f42" alt="Order online QR code">
+      <span>Scan to order online</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
