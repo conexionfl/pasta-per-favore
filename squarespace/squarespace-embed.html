@@ -61,16 +61,25 @@
   .fluid-engine .sqs-block { height: auto !important; }
   .fluid-engine .fe-block { height: auto !important; align-self: start !important; }
 
-  /* The grid container itself may still be sized to the original dragged
-     row-track height even with its children now set to auto. Force it to
-     size to its content too, in case that's a separate contributor. */
-  .fluid-engine { height: auto !important; min-height: 0 !important; grid-template-rows: none !important;
-    row-gap: 0 !important; gap: 0 !important; }
-  /* Squarespace's grid defines 356-606 separate row tracks with an 11px
-     gap BETWEEN every one of them. Our single block spans nearly all of
-     those rows, so even with each row's own height zeroed out, the gaps
-     between ~356 rows alone add up to roughly 3,900px of dead space -
-     almost certainly the real source of the remaining top/bottom gaps. */
+  /* DECISIVE FIX: rather than keep overriding individual CSS Grid
+     properties (row heights, row-gap, track minimums) one at a time,
+     remove the grid layout entirely. Squarespace's grid defines 356-606
+     row tracks with an 11px gap between every one of them - our single
+     block spans nearly all of those rows, so the gaps alone add up to
+     ~3,900px of dead space regardless of any track-sizing override. We
+     only have one child block and don't need CSS Grid's multi-item
+     positioning at all, so switching to a plain block container skips
+     every grid-sizing quirk (rows, gaps, minimums) in one move. */
+  .fluid-engine {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .fluid-engine .fe-block {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
 
   /* Another wrapper sitting between the block and our actual content
      (seen in the DevTools breadcrumb: .sqs-block-content > .sqs-code-container
