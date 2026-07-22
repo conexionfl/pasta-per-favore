@@ -16,6 +16,13 @@
      as a safety net alongside manually widening it in mobile edit view. */
   .fluid-engine .fe-block { grid-column: 1 / -1 !important; }
 
+  /* Squarespace gives every code block default inner padding (meant for
+     normal text/image blocks). That's the gap above our hero photo and
+     the blank space below our footer - strip it since this whole page
+     lives inside one single block with no other content to protect. */
+  .sqs-block-content, .sqs-block, .sqs-block-alignment-wrapper,
+  .fe-block > *, .sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
   :root{
     --black:#111110;
     --coal:#1a1917;
