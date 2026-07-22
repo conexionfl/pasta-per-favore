@@ -61,6 +61,11 @@
   .fluid-engine .sqs-block { height: auto !important; }
   .fluid-engine .fe-block { height: auto !important; align-self: start !important; }
 
+  /* The grid container itself may still be sized to the original dragged
+     row-track height even with its children now set to auto. Force it to
+     size to its content too, in case that's a separate contributor. */
+  .fluid-engine { height: auto !important; min-height: 0 !important; grid-template-rows: none !important; }
+
   img{max-width:100%;display:block}
   a{color:var(--gold);text-decoration:none}
 
