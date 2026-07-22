@@ -66,6 +66,11 @@
      size to its content too, in case that's a separate contributor. */
   .fluid-engine { height: auto !important; min-height: 0 !important; grid-template-rows: none !important; }
 
+  /* Another wrapper sitting between the block and our actual content
+     (seen in the DevTools breadcrumb: .sqs-block-content > .sqs-code-container
+     > our nav) - hadn't been forced to auto-height yet. */
+  .sqs-code-container { height: auto !important; min-height: 0 !important; }
+
   img{max-width:100%;display:block}
   a{color:var(--gold);text-decoration:none}
 
