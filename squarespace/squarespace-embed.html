@@ -3,6 +3,18 @@
      doesn't require the paywalled Page Header Code Injection field. */
   .Header-inner, .tweak-mobile-bar-top-fixed .Mobile-bar--top { display: none !important; }
 
+  /* Squarespace applies its own site-wide typography to every h1-h6 tag
+     (including uppercase and its own heading font), which is why the
+     dish names were showing "SPAGHETTI W/ MEAT SAUCE" in caps and losing
+     our intended font variety. Reset text-transform globally, then force
+     our own font-family choices back on with !important so they win
+     regardless of Squarespace's default heading specificity. */
+  h1, h2, h3, h4, h5, h6 { text-transform: none !important; }
+  .hero-content h1 { font-family: var(--display) !important; }
+  h2.title, .cater-copy h2, .pickup-side h2, .visit-info h3 { font-family: var(--display) !important; }
+  .mi-head h3, .sig-body h3 { font-family: var(--serif) !important; }
+  footer h4 { font-family: var(--sans) !important; text-transform: uppercase !important; }
+
   /* Force this section's content to true full-bleed - Squarespace's own
      "content-width--wide" setting leaves a margin even when the section
      background is set to full-bleed, which is the white border. */
