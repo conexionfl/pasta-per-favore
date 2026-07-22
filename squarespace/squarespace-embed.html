@@ -1,10 +1,4 @@
 <style>
-  /* The custom fonts (Julius Sans One / Cormorant Garamond / Jost) never
-     loaded on the Squarespace embed - the <link> tag that fetched them
-     lived in the original page's <head>, which Squarespace replaces with
-     its own. @import must be the very first thing in the stylesheet. */
-  @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap');
-
   /* Hide Squarespace's own header/nav on this page - folded in here so it
      doesn't require the paywalled Page Header Code Injection field. */
   .Header-inner, .tweak-mobile-bar-top-fixed .Mobile-bar--top { display: none !important; }
@@ -349,6 +343,16 @@
     .foot-grid{grid-template-columns:1fr;gap:34px}
   }
 </style>
+<!-- The custom fonts (Julius Sans One / Cormorant Garamond / Jost) need
+     their own stylesheet link - the original <link> lived in the page's
+     <head>, which Squarespace replaces with its own, and a CSS @import
+     inside this embedded <style> tag was silently stripped, leaving
+     every element on generic fallback fonts. A real <link> tag placed
+     directly in the markup is more likely to survive Squarespace's
+     code-block sanitizing than @import did. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!-- ======= NAV ======= -->
 <nav id="nav">
   <a class="nav-logo" href="#top">
