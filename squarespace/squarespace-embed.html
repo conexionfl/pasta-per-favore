@@ -64,7 +64,13 @@
   /* The grid container itself may still be sized to the original dragged
      row-track height even with its children now set to auto. Force it to
      size to its content too, in case that's a separate contributor. */
-  .fluid-engine { height: auto !important; min-height: 0 !important; grid-template-rows: none !important; }
+  .fluid-engine { height: auto !important; min-height: 0 !important; grid-template-rows: none !important;
+    row-gap: 0 !important; gap: 0 !important; }
+  /* Squarespace's grid defines 356-606 separate row tracks with an 11px
+     gap BETWEEN every one of them. Our single block spans nearly all of
+     those rows, so even with each row's own height zeroed out, the gaps
+     between ~356 rows alone add up to roughly 3,900px of dead space -
+     almost certainly the real source of the remaining top/bottom gaps. */
 
   /* Another wrapper sitting between the block and our actual content
      (seen in the DevTools breadcrumb: .sqs-block-content > .sqs-code-container
