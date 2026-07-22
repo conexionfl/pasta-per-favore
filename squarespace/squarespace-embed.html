@@ -9,6 +9,13 @@
   .content-width--wide { max-width: none !important; width: 100% !important; }
   main.container { max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
 
+  /* Squarespace's Fluid Engine assigns each block its own grid position
+     PER SCREEN SIZE independently. Widening the block in the desktop editor
+     doesn't widen its mobile position - this forces every fluid-engine
+     block (including this one) to span the full grid width at any size,
+     as a safety net alongside manually widening it in mobile edit view. */
+  .fluid-engine .fe-block { grid-column: 1 / -1 !important; }
+
   :root{
     --black:#111110;
     --coal:#1a1917;
