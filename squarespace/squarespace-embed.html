@@ -51,6 +51,14 @@
      divider-spacing variable, which is the gap above the hero photo.
      Neutralize that offset so it sits flush at the true top of the section. */
   .section-border { top: 0 !important; }
+
+  /* Found via DevTools: .fluid-engine .sqs-block has height:100%, forcing
+     our content wrapper to stretch to match the block's dragged grid-row
+     height rather than sizing to its own content. That mismatch is the
+     blank space after the footer. Let it size to content instead. */
+  .fluid-engine .sqs-block { height: auto !important; }
+  .fluid-engine .fe-block { height: auto !important; align-self: start !important; }
+
   img{max-width:100%;display:block}
   a{color:var(--gold);text-decoration:none}
 
