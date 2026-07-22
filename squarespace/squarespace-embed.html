@@ -3,6 +3,12 @@
      doesn't require the paywalled Page Header Code Injection field. */
   .Header-inner, .tweak-mobile-bar-top-fixed .Mobile-bar--top { display: none !important; }
 
+  /* Force this section's content to true full-bleed - Squarespace's own
+     "content-width--wide" setting leaves a margin even when the section
+     background is set to full-bleed, which is the white border. */
+  .content-width--wide { max-width: none !important; width: 100% !important; }
+  main.container { max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+
   :root{
     --black:#111110;
     --coal:#1a1917;
