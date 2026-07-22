@@ -71,6 +71,21 @@
      > our nav) - hadn't been forced to auto-height yet. */
   .sqs-code-container { height: auto !important; min-height: 0 !important; }
 
+  /* Found via the full page source: the <section> is classed
+     "vertical-alignment--middle", meaning Squarespace vertically CENTERS
+     our whole block within the section's total height instead of aligning
+     it to the top. If the section is taller than our content, that
+     centering is exactly the gap above the hero AND below the footer -
+     same leftover space, split in half on each side. Force top alignment
+     and zero out the remaining wrapper heights just in case. */
+  .vertical-alignment--middle, .content-wrapper, .content {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #footer-sections { display: none !important; }
+
   img{max-width:100%;display:block}
   a{color:var(--gold);text-decoration:none}
 
