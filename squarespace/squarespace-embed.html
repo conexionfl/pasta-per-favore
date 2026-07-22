@@ -45,12 +45,14 @@
      doesn't paint a section-specific dark background. Force black on every
      wrapping layer so nothing white can show through anywhere. */
   html, body, .sqs-block-content, .sqs-block, .fluid-engine, .section-background,
-  .fe-block, .content-width--wide, .section-border { background: var(--black) !important; background-color: var(--black) !important; }
+  .fe-block, .content-width--wide { background: var(--black) !important; background-color: var(--black) !important; }
 
-  /* .section-border also offsets its own top edge using a Squarespace
-     divider-spacing variable, which is the gap above the hero photo.
-     Neutralize that offset so it sits flush at the true top of the section. */
-  .section-border { top: 0 !important; }
+  /* Confirmed via inspecting the live page: .section-border wraps an empty
+     .section-background - Squarespace's own decorative section divider/
+     background layer. It has nothing in it and was rendering as a solid
+     black rectangle over our real hero photo. This page has only one
+     section (ours), so this native layer serves no purpose - remove it. */
+  .section-border { display: none !important; }
 
   /* Found via DevTools: .fluid-engine .sqs-block has height:100%, forcing
      our content wrapper to stretch to match the block's dragged grid-row
