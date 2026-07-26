@@ -200,18 +200,39 @@
   .parallax-band .pveil{position:absolute;inset:0;background:rgba(12,11,10,.45)}
   .parallax-band blockquote{position:relative;z-index:2;font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3.4vw,2.2rem);
     color:var(--cream);text-align:center;max-width:700px;padding:0 24px;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+  .gal-filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+  .gal-filters button{font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;padding:11px 22px;
+    background:transparent;border:1px solid rgba(227,184,96,.35);color:var(--muted);cursor:pointer;transition:all .2s}
+  .gal-filters button:hover{border-color:var(--gold);color:var(--gold)}
+  .gal-filters button.active{background:var(--rosso);border-color:var(--rosso);color:#fdf6ea}
+
   .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:10px}
-  .gal-grid a{overflow:hidden;position:relative;display:block}
+  .gal-grid a{overflow:hidden;position:relative;display:block;opacity:1;transform:scale(1);transition:opacity .3s ease,transform .3s ease}
   .gal-grid a.tall{grid-row:span 2}
   .gal-grid a.wide{grid-column:span 2}
   .gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .6s ease;filter:saturate(.92)}
   .gal-grid a:hover img{transform:scale(1.07);filter:saturate(1.1)}
+  .gal-grid a{position:sticky}
+  .gal-grid a:nth-child(4n+1){top:8px}
+  .gal-grid a:nth-child(4n+2){top:28px}
+  .gal-grid a:nth-child(4n+3){top:14px}
+  .gal-grid a:nth-child(4n+4){top:36px}
+  .gal-cap{position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;
+    background:linear-gradient(0deg,rgba(8,7,6,.88),rgba(8,7,6,0));
+    opacity:0;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+  .gal-grid a:hover .gal-cap{opacity:1;transform:none}
+  .gal-cap span{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream);display:block}
 
   /* lightbox */
-  #lightbox{position:fixed;inset:0;background:rgba(8,8,7,.94);z-index:200;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+  #lightbox{position:fixed;inset:0;background:rgba(8,8,7,.94);z-index:200;display:none;align-items:center;justify-content:center;cursor:default;padding:24px}
   #lightbox.open{display:flex}
-  #lightbox img{max-width:88vw;max-height:86vh;object-fit:contain;box-shadow:0 0 80px rgba(0,0,0,.8)}
-  #lightbox .close{position:absolute;top:22px;right:32px;color:var(--gold);font-size:2rem;cursor:pointer;font-family:var(--sans)}
+  #lightbox .lb-inner{display:flex;gap:0;max-width:1100px;max-height:88vh;background:var(--card);border:1px solid rgba(227,184,96,.25);box-shadow:0 40px 100px rgba(0,0,0,.7)}
+  #lightbox .lb-img{flex:1.3;min-width:0;background:#000}
+  #lightbox .lb-img img{width:100%;height:100%;object-fit:cover;display:block}
+  #lightbox .lb-caption{flex:1;min-width:260px;max-width:340px;padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
+  #lightbox .lb-caption h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--gold);margin-bottom:14px}
+  #lightbox .lb-caption p{color:var(--muted);font-size:.96rem;line-height:1.6;margin-bottom:26px}
+  #lightbox .close{position:absolute;top:22px;right:32px;color:var(--gold);font-size:2rem;cursor:pointer;font-family:var(--sans);z-index:2}
 
   /* ---------- CATERING ---------- */
   #catering{background:var(--coal)}
@@ -327,6 +348,16 @@
   .soc svg{width:15px;height:15px;color:var(--gold);flex:none}
   .foot-bottom .grazie{display:inline-flex;align-items:center}
 
+  /* ---------- PHONE CTA ---------- */
+  .nav-phone{display:flex;align-items:center;gap:7px;color:var(--cream);font-family:var(--sans);font-size:.78rem;letter-spacing:.1em}
+  .nav-phone svg{width:15px;height:15px;color:var(--gold);flex:none}
+  .nav-phone:hover{color:var(--gold)}
+  footer li.phone-li{display:flex;align-items:center;gap:8px}
+  footer li.phone-li svg{width:14px;height:14px;color:var(--gold);flex:none}
+
+  /* ---------- MOBILE STICKY ORDER BAR ---------- */
+  .mobile-bar{display:none}
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:920px){
     .menu-grid{grid-template-columns:1fr}
@@ -358,6 +389,21 @@
     .visit-info{padding:40px 26px}
     .g-score .num{font-size:2rem}
     .foot-grid{grid-template-columns:1fr;gap:34px}
+    #lightbox .lb-inner{flex-direction:column;max-height:92vh;overflow-y:auto;max-width:94vw}
+    #lightbox .lb-caption{max-width:none}
+    #lightbox .lb-img img{max-height:46vh}
+
+    body{padding-bottom:64px}
+    .mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:150;
+      background:rgba(17,17,16,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      border-top:1px solid rgba(227,184,96,.25);padding:10px 14px;gap:10px;
+      box-shadow:0 -8px 24px rgba(0,0,0,.4)}
+    .mobile-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+      font-family:var(--sans);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+      padding:12px 10px;border-radius:8px}
+    .mobile-bar .mb-order{background:var(--gold);color:#141210;flex:2}
+    .mobile-bar .mb-call{border:1px solid var(--gold);color:var(--gold);flex:1}
+    .mobile-bar svg{width:16px;height:16px;flex:none}
   }
 </style>
 <!-- The custom fonts (Julius Sans One / Cormorant Garamond / Jost) need
@@ -384,6 +430,9 @@
     <li><a href="#story">Our Story</a></li>
     <li><a href="#catering">Catering</a></li>
     <li><a href="#visit">Visit</a></li>
+    <li><a class="nav-phone" href="tel:+19133535309" aria-label="Call Pasta Per Favore">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (913) 353-5309</a></li>
     <li><a class="btn btn-solid" href="https://order.spoton.com/so-pasta-per-favore-27914/kansas-city-ks/69d68d5ac0474c99b9741f42" target="_blank" rel="noopener">Order Online</a></li>
   </ul>
 </nav>
@@ -579,6 +628,12 @@
     <h2 class="title reveal">GALLERY</h2>
     <div class="rule reveal"></div>
     <p class="lede reveal">The pasta, the people, the place.</p>
+    <div class="gal-filters reveal" id="galFilters">
+      <button class="active" data-cat="all">All</button>
+      <button data-cat="dishes">Dishes</button>
+      <button data-cat="kitchen">Fresh Craft</button>
+      <button data-cat="catering">Catering</button>
+    </div>
     <div class="gal-grid reveal" id="galGrid"></div>
   </div>
 </section>
@@ -763,6 +818,7 @@
         <p>Monday &#8211; Saturday &#183; 11am &#8211; 9pm</p>
         <p class="sub">Sunday &#183; Closed</p>
         <h3>CONTACT</h3>
+        <p class="sub"><a href="tel:+19133535309" style="color:var(--cream)">(913) 353-5309</a></p>
         <p class="sub"><a href="mailto:pastaperfavore@gmail.com" style="color:var(--cream)">pastaperfavore@gmail.com</a></p>
         <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Pasta+Per+Favore%2C+3102+S+24th+Street%2C+Kansas+City%2C+KS+66106" target="_blank" rel="noopener">Get Directions</a>
       </div>
@@ -785,6 +841,7 @@
       <h4>Find Us</h4>
       <ul>
         <li><a href="https://www.google.com/maps/search/?api=1&query=Pasta+Per+Favore%2C+3102+S+24th+Street%2C+Kansas+City%2C+KS+66106" target="_blank" rel="noopener">3102 S 24th Street<br><span>Kansas City, KS 66106</span></a></li>
+        <li class="phone-li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+19133535309">(913) 353-5309</a></li>
         <li><a href="mailto:pastaperfavore@gmail.com">pastaperfavore@gmail.com</a></li>
       </ul>
     </div>
@@ -830,7 +887,27 @@
 </footer>
 
 <!-- ======= LIGHTBOX ======= -->
-<div id="lightbox"><span class="close">&#10005;</span><img alt="Gallery photo"></div>
+<div id="lightbox">
+  <span class="close">&#10005;</span>
+  <div class="lb-inner">
+    <div class="lb-img"><img alt="Gallery photo"></div>
+    <div class="lb-caption">
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <a class="btn btn-solid" id="lbOrder" href="https://order.spoton.com/so-pasta-per-favore-27914/kansas-city-ks/69d68d5ac0474c99b9741f42" target="_blank" rel="noopener">Order This Dish &#8594;</a>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MOBILE STICKY ORDER BAR ======= -->
+<div class="mobile-bar">
+  <a class="mb-order" href="https://order.spoton.com/so-pasta-per-favore-27914/kansas-city-ks/69d68d5ac0474c99b9741f42" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1.2 12.2a1.8 1.8 0 0 1-1.8 1.6H8a1.8 1.8 0 0 1-1.8-1.6L5 8z"/><path d="M8.5 10V6.5a3.5 3.5 0 0 1 7 0V10"/></svg>
+    Order Online</a>
+  <a class="mb-call" href="tel:+19133535309" aria-label="Call Pasta Per Favore">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call Us</a>
+</div>
 
 <script>
 /* ---------- MENU DATA (from SpotOn ordering) ---------- */
@@ -959,30 +1036,69 @@ document.getElementById('menuCats').addEventListener('click', e => {
 /* ---------- GALLERY ---------- */
 const CDN = 'https://conexionfl.github.io/pasta-per-favore/images/';
 const PHOTOS = [
-  ['gallery/7a2874f0-abb6-4ce8-a243-6250df880c04.jpg','tall'],
-  ['gallery/d87dd678-d1b1-460b-af81-3d8945339854.jpg',''],
-  ['gallery/e59e36ce-4450-439d-b7bb-f974de0dac61.jpg',''],
-  ['gallery/9674f45f-daf1-48b6-a9d7-e91ed57d147a.jpg','wide'],
-  ['gallery/ca0a19b6-aa48-4153-9ef8-93373d02c49c.jpg',''],
-  ['gallery/17971cba-5f11-447b-9c75-d93b41a9f54e.jpg','tall'],
-  ['gallery/b734341f-4f5a-4b36-997c-9efa04e36ec9.jpg',''],
-  ['gallery/fc209714-39b0-4f72-8484-8f7d01be4571.jpg',''],
-  ['gallery/3b04ee3c-e986-4c21-8553-4ffc3d29d1be.jpg','wide'],
-  ['gallery/18bde0b7-3ade-4830-ae7b-e9665abb1192.jpg',''],
-  ['gallery/5bb597e8-f2ad-458d-a733-9c6f3df0fa51.jpg',''],
-  ['gallery/89c6d17a-fa1b-4342-945b-276a0ead1533.jpg',''],
+  { f:'gallery/7a2874f0-abb6-4ce8-a243-6250df880c04.jpg', cls:'tall', cat:'catering',
+    title:'Family-Style Spread', desc:'Sausage, meatballs, pappardelle bolognese, chicken parmesan and dessert &#8212; a table built for sharing.' },
+  { f:'gallery/d87dd678-d1b1-460b-af81-3d8945339854.jpg', cls:'', cat:'dishes',
+    title:'Shrimp Ravioli', desc:'House-made ravioli tossed with garlic shrimp in a light, creamy sauce.' },
+  { f:'gallery/e59e36ce-4450-439d-b7bb-f974de0dac61.jpg', cls:'', cat:'dishes',
+    title:'Powdered Sugar Cookies', desc:'A classic Italian wedding cookie &#8212; delicate, buttery, and dusted just right.' },
+  { f:'gallery/9674f45f-daf1-48b6-a9d7-e91ed57d147a.jpg', cls:'wide', cat:'kitchen',
+    title:'Prepped Fresh, Daily', desc:'Garlic, asparagus, artichokes, peppers and citrus &#8212; cut and ready before every service.' },
+  { f:'gallery/ca0a19b6-aa48-4153-9ef8-93373d02c49c.jpg', cls:'', cat:'dishes',
+    title:'Pappardelle Bolognese', desc:'Wide ribbons of fresh pasta tossed in our slow-braised, four-hour meat sauce.' },
+  { f:'gallery/17971cba-5f11-447b-9c75-d93b41a9f54e.jpg', cls:'tall', cat:'dishes',
+    title:'Chicken Parmesan', desc:'House-breaded chicken over San Marzano marinara, finished with parmesan.' },
+  { f:'gallery/b734341f-4f5a-4b36-997c-9efa04e36ec9.jpg', cls:'', cat:'kitchen',
+    title:'Fresh Off The Stove', desc:'Ravioli finished in a light cream and tomato sauce, right over the open flame.' },
+  { f:'gallery/fc209714-39b0-4f72-8484-8f7d01be4571.jpg', cls:'', cat:'dishes',
+    title:'House-Made Meatballs', desc:'Pork and beef meatballs, simmered in our four-hour rag&#249; and topped with parmesan.' },
+  { f:'gallery/3b04ee3c-e986-4c21-8553-4ffc3d29d1be.jpg', cls:'wide', cat:'dishes',
+    title:'Flourless Chocolate Cake', desc:'Rich and gluten-free, topped with fresh strawberries and blackberries.' },
+  { f:'gallery/18bde0b7-3ade-4830-ae7b-e9665abb1192.jpg', cls:'', cat:'dishes',
+    title:'Sicilian Cannoli', desc:'Crisp shells filled fresh to order, dusted with powdered sugar and fresh strawberry.' },
+  { f:'gallery/5bb597e8-f2ad-458d-a733-9c6f3df0fa51.jpg', cls:'', cat:'catering',
+    title:'Chef&#8217;s Table', desc:'A sampling of our Italian sausage, chicken parmesan and tiramisu, plated together.' },
+  { f:'gallery/89c6d17a-fa1b-4342-945b-276a0ead1533.jpg', cls:'', cat:'dishes',
+    title:'Classic Tiramisu', desc:'Layered mascarpone with a warm caramel drizzle and shaved chocolate.' },
 ];
-document.getElementById('galGrid').innerHTML = PHOTOS.map(([f,cls]) =>
-  `<a href="#" class="${cls}" data-full="${CDN+f}"><img loading="lazy" src="${CDN+f}" alt="Pasta Per Favore"></a>`).join('');
 
+const galGrid = document.getElementById('galGrid');
+galGrid.innerHTML = PHOTOS.map(p =>
+  `<a href="#" class="${p.cls}" data-cat="${p.cat}" data-full="${CDN+p.f}" data-title="${p.title}" data-desc="${p.desc}">
+    <img loading="lazy" src="${CDN+p.f}" alt="${p.title}">
+    <span class="gal-cap"><span>${p.title}</span></span>
+  </a>`).join('');
+
+/* filter tabs */
+document.getElementById('galFilters').addEventListener('click', e => {
+  const btn = e.target.closest('button'); if(!btn) return;
+  document.querySelectorAll('#galFilters button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cat = btn.dataset.cat;
+  [...galGrid.children].forEach(a => {
+    const match = cat === 'all' || a.dataset.cat === cat;
+    if(match){
+      a.style.display = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => { a.style.opacity = '1'; a.style.transform = 'scale(1)'; }));
+    } else {
+      a.style.opacity = '0';
+      a.style.transform = 'scale(.92)';
+      setTimeout(() => { if(!(cat === 'all' || a.dataset.cat === cat)) a.style.display = 'none'; }, 260);
+    }
+  });
+});
+
+/* lightbox */
 const lb = document.getElementById('lightbox');
-document.getElementById('galGrid').addEventListener('click', e => {
+galGrid.addEventListener('click', e => {
   const a = e.target.closest('a'); if(!a) return;
   e.preventDefault();
-  lb.querySelector('img').src = a.dataset.full;
+  lb.querySelector('.lb-img img').src = a.dataset.full;
+  lb.querySelector('#lbTitle').textContent = a.dataset.title;
+  lb.querySelector('#lbDesc').textContent = a.dataset.desc;
   lb.classList.add('open');
 });
-lb.addEventListener('click', () => lb.classList.remove('open'));
+lb.addEventListener('click', e => { if(e.target === lb || e.target.classList.contains('close')) lb.classList.remove('open'); });
 
 /* ---------- NAV SCROLL / MOBILE ---------- */
 const nav = document.getElementById('nav');
